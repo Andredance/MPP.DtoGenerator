@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace GeneratorDTO
 {
-    public class Class1
+    public class Faker
     {
+        public Faker() { }
+
+        public T Create<T>()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
