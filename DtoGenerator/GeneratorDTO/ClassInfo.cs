@@ -19,7 +19,7 @@ namespace GeneratorDTO
             return new List<PropertyInfo>(typeof(T).GetProperties());
         }
 
-        internal static List<FieldInfo> GetClassFieldInfo()
+        internal static List<FieldInfo> GetClassFieldsInfo()
         {
             return new List<FieldInfo>(typeof(T).GetFields());
         }
