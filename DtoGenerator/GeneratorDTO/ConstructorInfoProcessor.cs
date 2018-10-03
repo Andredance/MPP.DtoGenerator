@@ -9,7 +9,7 @@ namespace GeneratorDTO
 {
     internal static class ConstructorInfoProcessor
     {
-        internal static ConstructorInfo GetMaxParameterizedByBasicTypesConstructor(List<ConstructorInfo> allConstructors)
+        internal static ConstructorInfo GetMaxParameterizedConstructor(List<ConstructorInfo> allConstructors)
         {
             if (allConstructors.Count == 0)
             {
@@ -17,15 +17,7 @@ namespace GeneratorDTO
             }
     
             allConstructors = allConstructors.OrderBy(item => item.GetParameters().Length).ToList();
-            foreach (ConstructorInfo constructor in allConstructors)
-            {
-                if (constructor.GetParameters().Any(parameter => ParametersInfoProcessor.isParameterSimple(parameter)))
-                {
-                    return constructor;
-                }
-            }
-
-            throw new InvalidOperationException("Can't find constructor that satisfying conditions");
+            return allConstructors[0];
         } 
     }
 }
