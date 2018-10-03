@@ -9,7 +9,12 @@ namespace GeneratorDTO
 {
     internal static class ParametersInfoProcessor
     {
-        internal static bool isParameterSimple(ParameterInfo parameter)
+        internal static List<ParameterInfo> GetParametersInfo(ConstructorInfo constructor)
+        {
+            return constructor.GetParameters().ToList();
+        }
+
+        internal static bool IsParameterSimple(ParameterInfo parameter)
         {
             Type type = parameter.GetType();
             return type.IsPrimitive || type.Equals(typeof(string));
