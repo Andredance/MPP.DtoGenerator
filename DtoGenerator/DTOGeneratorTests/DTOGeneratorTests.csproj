@@ -50,8 +50,15 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="TestClass.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GeneratorDTO\GeneratorDTO.csproj">
+      <Project>{D06BA0AD-E001-4940-9600-457D1945C5D0}</Project>
+      <Name>GeneratorDTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
