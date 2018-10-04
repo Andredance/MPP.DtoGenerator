@@ -10,7 +10,7 @@ namespace GeneratorDTO.Generators
     {
         public object Generate()
         {
-            throw new NotImplementedException();
+            return new DoubleGenerator().Generate();
         }
     }
 }
