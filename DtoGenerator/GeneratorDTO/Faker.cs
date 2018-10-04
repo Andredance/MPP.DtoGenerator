@@ -11,25 +11,57 @@ namespace GeneratorDTO
     {
         public Faker() { }
 
+        public object CreateByConstructor(ConstructorInfo constructor)
+        {
+            List<ParameterInfo> parameters = ParametersInfoProcessor.GetParametersInfo(constructor);
+            object[] tmpParams = new object[parameters.Count];
+            int i = 0;
+
+            foreach (ParameterInfo parameterInfo in parameters)
+            {
+                tmpParams[i] = ParameterGenerator.Generate(parameterInfo.GetType(), this);
+            }
+            return constructor.Invoke(tmpParams);
+        }
+
+        public object CreateByFieldsAndProperties(Type t)
+        {
+            object res = Activator.CreateInstance(t);
+            List<FieldInfo> fields = ClassInfo.GetClassFieldsInfo(t);
+            List<PropertyInfo> settableProperties = PropertiesInfoProcessor.GetSettableProperties(ClassInfo.GetClassPropertiesInfo(t));
+            foreach (FieldInfo field in fields)
+            {
+                field.SetValue(res, ParameterGenerator.Generate(field.FieldType, this));
+            }
+
+            foreach (PropertyInfo property in settableProperties)
+            {
+                property.SetValue(res, ParameterGenerator.Generate(property.PropertyType, this));
+            }
+
+            return res;
+        }
+
         public object Create(Type t)
         {
+            ParameterGenerator.AddToRecursionControlList(t);
+            Object result;
             List<ConstructorInfo> constructors = ClassInfo.GetClassConstructorsInfo(t);
-            if (constructors.Count != 0)
+            if (constructors.Count > 1)
             {
                 ConstructorInfo bestConstructor = ConstructorInfoProcessor.GetMaxParameterizedConstructor(constructors);
-                List<ParameterInfo> parameters = ParametersInfoProcessor.GetParametersInfo(bestConstructor);
-
+                result = CreateByConstructor(bestConstructor);
             }
             else
             {
-
+                result = CreateByFieldsAndProperties(t);
             }
-            Object obj = new Object();
-            return obj;
+            return result;
         }
 
         public T Create<T>()
         {
+            ParameterGenerator.ClearRecursionControlList();
             return (T)Create(typeof(T));         
         }
     }
