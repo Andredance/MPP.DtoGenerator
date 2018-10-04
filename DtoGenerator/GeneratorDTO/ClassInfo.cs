@@ -7,21 +7,21 @@ using System.Threading.Tasks;
 
 namespace GeneratorDTO
 {
-    internal static class ClassInfo<T>
+    internal static class ClassInfo
     {
-        internal static List<ConstructorInfo> GetClassConstructorsInfo()
+        internal static List<ConstructorInfo> GetClassConstructorsInfo(Type t)
         {
-            return new List<ConstructorInfo>(typeof(T).GetConstructors());
+            return new List<ConstructorInfo>(t.GetConstructors());
         }
 
-        internal static List<PropertyInfo> GetClassPropertiesInfo()
+        internal static List<PropertyInfo> GetClassPropertiesInfo(Type t)
         {
-            return new List<PropertyInfo>(typeof(T).GetProperties());
+            return new List<PropertyInfo>(t.GetProperties());
         }
 
-        internal static List<FieldInfo> GetClassFieldsInfo()
+        internal static List<FieldInfo> GetClassFieldsInfo(Type t)
         {
-            return new List<FieldInfo>(typeof(T).GetFields());
+            return new List<FieldInfo>(t.GetFields());
         }
     }
 }
