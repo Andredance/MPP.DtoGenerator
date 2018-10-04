@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace GeneratorDTO
 {
-    internal static class ClassInfo
+    public static class ClassInfo
     {
-        internal static List<ConstructorInfo> GetClassConstructorsInfo(Type t)
+        public static List<ConstructorInfo> GetClassConstructorsInfo(Type t)
         {
             return new List<ConstructorInfo>(t.GetConstructors());
         }
