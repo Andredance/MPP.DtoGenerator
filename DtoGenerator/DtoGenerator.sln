@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DtoGenerator", "DtoGenerator.csproj", "{92BBCC6D-8AE3-4BD4-921C-8953C6FDD6EB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleUsageExample", "ConsoleUsageExample.csproj", "{92BBCC6D-8AE3-4BD4-921C-8953C6FDD6EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTOGeneratorTests", "DTOGeneratorTests\DTOGeneratorTests.csproj", "{5388AC7F-094D-4BFB-9193-4C14FE3D5514}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneratorDTO", "GeneratorDTO\GeneratorDTO.csproj", "{D06BA0AD-E001-4940-9600-457D1945C5D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{92BBCC6D-8AE3-4BD4-921C-8953C6FDD6EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92BBCC6D-8AE3-4BD4-921C-8953C6FDD6EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92BBCC6D-8AE3-4BD4-921C-8953C6FDD6EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5388AC7F-094D-4BFB-9193-4C14FE3D5514}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5388AC7F-094D-4BFB-9193-4C14FE3D5514}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5388AC7F-094D-4BFB-9193-4C14FE3D5514}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5388AC7F-094D-4BFB-9193-4C14FE3D5514}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D06BA0AD-E001-4940-9600-457D1945C5D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D06BA0AD-E001-4940-9600-457D1945C5D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D06BA0AD-E001-4940-9600-457D1945C5D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D06BA0AD-E001-4940-9600-457D1945C5D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
