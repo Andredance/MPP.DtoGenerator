@@ -8,9 +8,16 @@ namespace GeneratorDTO.Generators
 {
     public class FloatGenerator : IGenerator
     {
+        Random random;
+
+        public FloatGenerator()
+        {
+            random = new Random();
+        }
+
         public object Generate()
         {
-            return new DoubleGenerator().Generate();
+            return (float)(random.NextDouble() * float.MaxValue);
         }
     }
 }
