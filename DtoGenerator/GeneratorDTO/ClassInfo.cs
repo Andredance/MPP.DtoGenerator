@@ -14,12 +14,12 @@ namespace GeneratorDTO
             return new List<ConstructorInfo>(t.GetConstructors());
         }
 
-        internal static List<PropertyInfo> GetClassPropertiesInfo(Type t)
+        public static List<PropertyInfo> GetClassPropertiesInfo(Type t)
         {
             return new List<PropertyInfo>(t.GetProperties());
         }
 
-        internal static List<FieldInfo> GetClassFieldsInfo(Type t)
+        public static List<FieldInfo> GetClassFieldsInfo(Type t)
         {
             return new List<FieldInfo>(t.GetFields());
         }
