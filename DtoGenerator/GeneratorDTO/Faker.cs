@@ -11,7 +11,7 @@ namespace GeneratorDTO
     {
         public Faker()
         {
-            ParameterGenerator.faker = this;
+            ParameterGenerator.Faker = this;
         }
 
         public object CreateByConstructor(ConstructorInfo constructor)

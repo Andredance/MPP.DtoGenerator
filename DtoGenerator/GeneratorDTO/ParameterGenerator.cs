@@ -13,21 +13,43 @@ namespace GeneratorDTO
         private static Dictionary<Type, IGenerator> generatorMethods;
         private static Dictionary<string, ICollectionGenerator> collectionGenerator;
         private static List<Type> recursionControl;
-        public static Faker faker;
+        private static Faker faker;
+
+        public static Faker Faker
+        {
+            get
+            {
+                return faker;
+            }
+            set
+            {
+                faker = value;
+            }
+        }
 
         static ParameterGenerator()
         {
+            Assembly asm = Assembly.LoadFrom("C:\\Users\\andre\\Documents\\labs\\mpp.labs\\MPP.DtoGenerator\\PluginGenerators\\bin\\Debug\\PluginGenerators.dll");
+
             collectionGenerator = new Dictionary<string, ICollectionGenerator>();
             generatorMethods = new Dictionary<Type, IGenerator>();
-            generatorMethods.Add(typeof(int), new IntGenerator());
             generatorMethods.Add(typeof(double), new DoubleGenerator());
             generatorMethods.Add(typeof(uint), new UIntGenerator());
             generatorMethods.Add(typeof(float), new FloatGenerator());
             generatorMethods.Add(typeof(char), new CharGenerator());
             generatorMethods.Add(typeof(string), new StringGenerator());
-            generatorMethods.Add(typeof(bool), new BoolGenerator());
             generatorMethods.Add(typeof(long), new LongGenerator());
             generatorMethods.Add(typeof(DateTime), new DateGenerator());
+
+            var types = asm.GetTypes().Where(t => t.GetInterfaces().Where(i => i.Equals(typeof(IGenerator))).Any());
+
+            foreach (var type in types)
+            {
+                var plugin = asm.CreateInstance(type.FullName) as IPluginGenerator;
+                Type t = plugin.GetGeneratorType();
+                if (!generatorMethods.ContainsKey(t))
+                    generatorMethods.Add(plugin.GetGeneratorType(), plugin as IGenerator);
+            }
 
             collectionGenerator.Add(typeof(List<>).Name, new ListGenerator());
 

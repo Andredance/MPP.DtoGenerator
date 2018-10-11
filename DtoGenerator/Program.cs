@@ -45,9 +45,11 @@ namespace DtoGenerator
     {
         static void Main(string[] args)
         {
-            C c = new C();
 
+            Faker faker = new Faker();
+            Simple c = faker.Create<Simple>();
             Console.WriteLine(c.a);
+            Console.WriteLine(c.h);
             Console.ReadKey();
         }
     }
